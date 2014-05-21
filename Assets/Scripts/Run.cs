@@ -5,10 +5,12 @@ public class Run : MonoBehaviour
 {
 	
 		Animator animator;
+		GameObject wheel;
 	
 		void Start ()
 		{
 				animator = GetComponent<Animator> ();
+				wheel = GameObject.Find ("Wheel");
 		}
 	
 		// Update is called once per frame
@@ -21,11 +23,13 @@ public class Run : MonoBehaviour
 						speed += 0.5f;
 				}
 				
-				speed = speed * 0.975f; // constantly slow down
+				speed = speed * 0.99f; // constantly slow down
 				
 				if (speed < 0.4f) {
 						speed = 0.0f;
 				}
+				
+				wheel.transform.Rotate (0, 0, speed);
 				
 				print ("speed = " + speed);
 				
